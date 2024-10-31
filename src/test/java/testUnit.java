@@ -20,12 +20,12 @@ public class testUnit {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().setSize(new Dimension(1980, 1020));
-        driver.get("");
+        driver.get("https://www.google.com/");
     }
 
     @Test
     public void testOne(){
-
+        
     }
 
     @After
