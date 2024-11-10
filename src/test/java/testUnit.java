@@ -13,21 +13,18 @@ public class testUnit {
     private WebDriverWait wait;
 
     @Before
-    public void start(){
+    public void autorizationAdmin(){
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1980, 1020));
-        driver.get("http://localhost/litecart/admin/login.php");
-
-        driver.findElement(By.xpath("//input[@name='username']")).sendKeys("admin");
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-
     }
 
     @Test
     public void testOne(){
-
+        driver.get("http://localhost/litecart/admin/login.php");
+        driver.findElement(By.xpath("//input[@name='username']")).sendKeys("admin");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin");
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
     }
 
     @After
