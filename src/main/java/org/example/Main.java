@@ -16,5 +16,7 @@ public class Main {
         driver.manage().window().setSize(new Dimension(1980, 1020));
         driver.get("https://www.google.ru/webhp?hl=ru");
         //driver.quit();
+
+
     }
 }
