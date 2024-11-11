@@ -4,9 +4,11 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.NoSuchElementException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
@@ -33,6 +35,7 @@ public class testUnit {
     @Test
     public void adminMenu() {
         driver.get("http://localhost/litecart/admin/login.php");
+        //Autorization
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys("admin");
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
@@ -147,7 +150,20 @@ public class testUnit {
         driver.findElement(By.xpath("//h1")).isDisplayed();
         driver.findElement(By.xpath("//span[text()='vQmods']/ancestor::a")).click();
         driver.findElement(By.xpath("//h1")).isDisplayed();
+    }
 
+    @Test
+    public void checkStickers(){
+        driver.get("http://localhost/litecart/en/");
+        List<WebElement> products = driver.findElements(By.xpath("//ul[@class='listing-wrapper products']/li"));
+        for (WebElement product : products){
+            List<WebElement> stickers = product.findElements(By.xpath("//div[contains(@class, 'sticker')]"));
+            if(stickers.size() == 1){
+                System.out.println("Существует 1 стикер для товара");
+            } else {
+                System.out.println("Существует более одного стикера для товара");
+            }
+        }
 
     }
 
